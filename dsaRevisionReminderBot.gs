@@ -1,10 +1,9 @@
 function sendTelegramRevisions() {
-  // 🔒 Replace these with your real values in a local copy
+  // 🔒 Replace these with real values
   var BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN";
   var CHAT_ID = "YOUR_CHAT_ID";
   var SPREADSHEET_ID = "YOUR_SPREADSHEET_ID";
 
-  // Open the sheet (assumes first sheet in the spreadsheet)
   var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheets()[0];
   var data = sheet.getDataRange().getValues();
 
@@ -16,16 +15,20 @@ function sendTelegramRevisions() {
   var count = 0;
 
   for (var i = 1; i < data.length; i++) {
-    var problem = data[i][2]; // Column C: Problem
-    var difficulty = data[i][3]; // Column D: Difficulty
-    var rev1 = data[i][4];    // Column E: 1 Week Rev
-    var rev2 = data[i][5];    // Column F: 1 Month Rev
-    var rev3 = data[i][6];    // Column G: 3 Month Rev
+    var problem = data[i][2]; // Column C
+    var difficultyRaw = data[i][3]; // Column D
+    var difficulty = difficultyRaw ? difficultyRaw.toString().trim().toLowerCase() : "";
 
-    // Normalize case
-    var difficultyFormatted = difficulty ? difficulty.toString().toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) : "";
+    var difficultyFormatted = "";
+    if (difficulty === "easy") difficultyFormatted = "Easy";
+    else if (difficulty === "medium") difficultyFormatted = "Medium";
+    else if (difficulty === "hard") difficultyFormatted = "Hard";
+    else difficultyFormatted = difficulty.charAt(0).toUpperCase() + difficulty.slice(1); // fallback
 
-    // Check if revision date is today
+    var rev1 = data[i][4]; // Column E
+    var rev2 = data[i][5]; // Column F
+    var rev3 = data[i][6]; // Column G
+
     if (
       (rev1 && new Date(rev1).toDateString() === today.toDateString()) ||
       (rev2 && new Date(rev2).toDateString() === today.toDateString()) ||
