@@ -33,11 +33,11 @@ You'll need a **Bot Token** and your **Chat ID** to allow the bot to send messag
 
 #### 🔑 Bot Token
 
-1.  Open [@BotFather](https://t.me/BotFather) in Telegram.
-2.  Type `/start` and then `/newbot`.
-3.  Follow the prompts to give your bot a name and a username.
-4.  BotFather will provide a **token** (e.g., `123456789:ABCDefGhIJKlmNOPqrSTUvwxYZ123456789`).
-5.  **Copy and save this token.** This is your `BOT_TOKEN`.
+1. Open [@BotFather](https://t.me/BotFather) in Telegram.
+2. Type `/start` and then `/newbot`.
+3. Follow the prompts to give your bot a name and a username.
+4. BotFather will provide a **token** (e.g., `123456789:ABCDefGhIJKlmNOPqrSTUvwxYZ123456789`).
+5. **Copy and save this token.** This is your `BOT_TOKEN`.
 
 #### 🆔 Chat ID
 
@@ -54,13 +54,13 @@ To get your `CHAT_ID`, follow these two steps:
 * Open the following URL in your web browser, replacing `YOUR_BOT_TOKEN` with the token you just received from BotFather:
 
     ```bash
-    https://api.telegram.org/botYOUR_BOT_TOKEN/getUpdates
+    [https://api.telegram.org/botYOUR_BOT_TOKEN/getUpdates](https://api.telegram.org/botYOUR_BOT_TOKEN/getUpdates)
     ```
 
     For example, if your bot token is `123456:ABC-XYZ`, then go to:
 
     ```ruby
-    https://api.telegram.org/bot123456:ABC-XYZ/getUpdates
+    [https://api.telegram.org/bot123456:ABC-XYZ/getUpdates](https://api.telegram.org/bot123456:ABC-XYZ/getUpdates)
     ```
 
 * You'll see a JSON response. Look for the `id` field within the `chat` object, like this:
@@ -86,17 +86,17 @@ To get your `CHAT_ID`, follow these two steps:
 
 You'll need to update the script with your personal credentials.
 
-1.  Open your Google Sheet and go to `Extensions > Apps Script`.
-2.  Paste the content of your `dsaRevisionReminderBot.gs` file into the Apps Script editor (usually named `Code.gs` by default).
-3.  **Replace the placeholder variables** in the script with your actual `BOT_TOKEN`, `CHAT_ID`, and your Google Sheet's `SPREADSHEET_ID`.
+1. Open your Google Sheet and go to `Extensions > Apps Script`.
+2. Paste the content of your `dsaRevisionReminderBot.gs` file into the Apps Script editor (usually named `Code.gs` by default).
+3. **Replace the placeholder variables** in the script with your actual `BOT_TOKEN`, `CHAT_ID`, and your Google Sheet's `SPREADSHEET_ID`.
 
     ```javascript
-    var BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN";     // e.g., 123456:ABC-XYZ
-    var CHAT_ID = "YOUR_CHAT_ID";                 // e.g., 123456789
-    var SPREADSHEET_ID = "YOUR_SPREADSHEET_ID";   // Found in your Google Sheet's URL, e.g., https://docs.google.com/spreadsheets/d/THIS_IS_YOUR_ID/edit
+    var BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN";      // e.g., 123456:ABC-XYZ
+    var CHAT_ID = "YOUR_CHAT_ID";                    // e.g., 123456789
+    var SPREADSHEET_ID = "YOUR_SPREADSHEET_ID";    // Found in your Google Sheet's URL, e.g., [https://docs.google.com/spreadsheets/d/THIS_IS_YOUR_ID/edit](https://docs.google.com/spreadsheets/d/THIS_IS_YOUR_ID/edit)
     ```
 
-4.  Save the script.
+4. Save the script.
 
 ---
 
@@ -104,14 +104,14 @@ You'll need to update the script with your personal credentials.
 
 Automate your daily reminders by setting up a time-driven trigger.
 
-1.  In the Apps Script editor, go to the `Triggers` section (the `⏰` icon on the left sidebar).
-2.  Click **+ Add Trigger**.
-3.  Configure the trigger settings:
+1. In the Apps Script editor, go to the `Triggers` section (the `⏰` icon on the left sidebar).
+2. Click **+ Add Trigger**.
+3. Configure the trigger settings:
     * **Function to run:** `sendTelegramRevisions`
     * **Event source:** `Time-driven`
     * **Type of time-based trigger:** Choose how often you want the reminder (e.g., `Day timer`).
     * **Select day of the week** (if applicable) and **Time of day**: Pick a time that suits you (e.g., every day at 8 AM).
-4.  Save the trigger.
+4. Save the trigger.
 
 ---
 
@@ -119,10 +119,9 @@ Automate your daily reminders by setting up a time-driven trigger.
 
 Here's how your daily DSA revision reminder will look in Telegram, with clear difficulty indicators:
 
-```
-📚 27-May-2025 – Today's DSA Revisions:
+---
+### 📅 27-May-2025 — Today's DSA Revisions:
 
-• TWO SUM – 🟢 Easy
-• SLIDING WINDOW – 🟡 Medium
-• MAX PROFIT – 🔴 Hard
-```
+* **Two Sum** — *Easy*
+* **Sliding Window** — *Medium*
+* **Max Profit** — *Hard*
